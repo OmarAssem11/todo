@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:todo/core/data/exception/return_local_app_exception.dart';
 import 'package:todo/features/tasks/data/models/task_model.dart';
 import 'package:todo/features/tasks/data/services/tasks_hive_service.dart';
 import 'package:todo/features/tasks/domain/datasources/tasks_local_datasource.dart';
@@ -14,16 +15,16 @@ class TasksLocalDataSourceImpl implements TasksLocalDataSource {
     try {
       return _tasksHiveService.createTask(taskModel);
     } catch (exception) {
-      throw UnimplementedError();
+      throw returnLocalAppException(exception);
     }
   }
 
   @override
-  Future<Map<dynamic, TaskModel>> getTasksMap() async {
+  Future<List<TaskModel>> getAllTasks() async {
     try {
-      return _tasksHiveService.getTasksMap();
+      return _tasksHiveService.getAllTasks();
     } catch (exception) {
-      throw UnimplementedError();
+      throw returnLocalAppException(exception);
     }
   }
 
@@ -35,7 +36,7 @@ class TasksLocalDataSourceImpl implements TasksLocalDataSource {
     try {
       return _tasksHiveService.editTask(index, taskModel);
     } catch (exception) {
-      throw UnimplementedError();
+      throw returnLocalAppException(exception);
     }
   }
 
@@ -44,7 +45,7 @@ class TasksLocalDataSourceImpl implements TasksLocalDataSource {
     try {
       return _tasksHiveService.deleteTask(index);
     } catch (exception) {
-      throw UnimplementedError();
+      throw returnLocalAppException(exception);
     }
   }
 }

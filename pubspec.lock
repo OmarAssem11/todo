@@ -320,7 +320,7 @@ packages:
     source: hosted
     version: "1.5.4"
   intl:
-    dependency: "direct dev"
+    dependency: transitive
     description:
       name: intl
       url: "https://pub.dartlang.org"

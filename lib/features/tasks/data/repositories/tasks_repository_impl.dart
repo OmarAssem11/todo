@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart' hide Task;
 import 'package:injectable/injectable.dart';
+import 'package:todo/core/data/exception/app_exception.dart';
 import 'package:todo/core/domain/failure/failure.dart';
+import 'package:todo/core/domain/failure/return_failure.dart';
 import 'package:todo/features/tasks/data/mappers/task_mapper.dart';
 import 'package:todo/features/tasks/data/mappers/task_model_mapper.dart';
 import 'package:todo/features/tasks/domain/datasources/tasks_local_datasource.dart';
@@ -12,34 +14,29 @@ class TasksRepositoryImpl implements TasksRepository {
   TasksRepositoryImpl(this._tasksLocalDataSource);
 
   final TasksLocalDataSource _tasksLocalDataSource;
-  final Map<dynamic, Task> _tasksMap = {};
   late List<Task> _allTasks;
-
-  int _getTaskIndex(Task task) =>
-      _tasksMap.keys.firstWhere((key) => _tasksMap[key] == task) as int;
 
   @override
   Future<Either<Failure, int>> createTask(Task task) async {
     try {
       final id = await _tasksLocalDataSource.createTask(task.toModel);
       return right(id);
-    } catch (error) {
-      return left(Failure());
+    } on AppException catch (appException) {
+      return left(returnFailure(appException));
     }
   }
 
   @override
   Future<Either<Failure, List<Task>>> getAllTasks() async {
     try {
-      final taskModelsMap = await _tasksLocalDataSource.getTasksMap();
-      for (int i = 0; i < taskModelsMap.length; i++) {
-        _tasksMap[taskModelsMap.keys.toList()[i]] =
-            taskModelsMap.values.toList()[i].fromModel;
-      }
-      _allTasks = _tasksMap.values.toList();
+      final taskModels = await _tasksLocalDataSource.getAllTasks();
+      _allTasks = [];
+      taskModels
+          .map((taskModel) => _allTasks.add(taskModel.fromModel))
+          .toList();
       return right(_allTasks);
-    } catch (error) {
-      return left(Failure());
+    } on AppException catch (appException) {
+      return left(returnFailure(appException));
     }
   }
 
@@ -53,8 +50,8 @@ class TasksRepositoryImpl implements TasksRepository {
         }
       }).toList();
       return right(completedTasks);
-    } catch (error) {
-      return left(Failure());
+    } on AppException catch (appException) {
+      return left(returnFailure(appException));
     }
   }
 
@@ -68,8 +65,8 @@ class TasksRepositoryImpl implements TasksRepository {
         }
       }).toList();
       return right(uncompletedTasks);
-    } catch (error) {
-      return left(Failure());
+    } on AppException catch (appException) {
+      return left(returnFailure(appException));
     }
   }
 
@@ -83,8 +80,8 @@ class TasksRepositoryImpl implements TasksRepository {
         }
       }).toList();
       return right(favoriteTasks);
-    } catch (error) {
-      return left(Failure());
+    } on AppException catch (appException) {
+      return left(returnFailure(appException));
     }
   }
 
@@ -100,15 +97,15 @@ class TasksRepositoryImpl implements TasksRepository {
         }
       }).toList();
       return right(selectedDateTasks);
-    } catch (error) {
-      return left(Failure());
+    } on AppException catch (appException) {
+      return left(returnFailure(appException));
     }
   }
 
   @override
   Future<Either<Failure, Unit>> completeTask(Task task) async {
     try {
-      final index = _getTaskIndex(task);
+      final index = _allTasks.indexOf(task);
       final updatedTask = task.isCompleted
           ? task.copyWith(isCompleted: false)
           : task.copyWith(isCompleted: true);
@@ -117,15 +114,15 @@ class TasksRepositoryImpl implements TasksRepository {
         taskModel: updatedTask.toModel,
       );
       return right(unit);
-    } catch (error) {
-      return left(Failure());
+    } on AppException catch (appException) {
+      return left(returnFailure(appException));
     }
   }
 
   @override
   Future<Either<Failure, Unit>> addTaskToFavorite(Task task) async {
     try {
-      final index = _getTaskIndex(task);
+      final index = _allTasks.indexOf(task);
       final updatedTask = task.isFavorite
           ? task.copyWith(isFavorite: false)
           : task.copyWith(isFavorite: true);
@@ -134,19 +131,20 @@ class TasksRepositoryImpl implements TasksRepository {
         taskModel: updatedTask.toModel,
       );
       return right(unit);
-    } catch (error) {
-      return left(Failure());
+    } on AppException catch (appException) {
+      return left(returnFailure(appException));
     }
   }
 
   @override
   Future<Either<Failure, Unit>> deleteTask(Task task) async {
     try {
-      final index = _getTaskIndex(task);
+      final index = _allTasks.indexOf(task);
       await _tasksLocalDataSource.deleteTask(index);
+      _allTasks.remove(task);
       return right(unit);
-    } catch (error) {
-      return left(Failure());
+    } on AppException catch (appException) {
+      return left(returnFailure(appException));
     }
   }
 }

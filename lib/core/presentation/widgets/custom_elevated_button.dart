@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/core/presentation/resources/color_manager.dart';
-import 'package:todo/core/presentation/resources/values_manager.dart';
+import 'package:todo/core/presentation/resources/radius_manager.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
@@ -26,7 +26,7 @@ class CustomElevatedButton extends StatelessWidget {
         ),
         shape: MaterialStateProperty.all(
           const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(AppSize.s20)),
+            borderRadius: BorderRadius.all(Radius.circular(RadiusManager.r20)),
           ),
         ),
       ),

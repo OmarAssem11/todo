@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo/core/presentation/extensions/time_of_day_to_formatted_string.dart';
 import 'package:todo/core/presentation/resources/color_manager.dart';
+import 'package:todo/core/presentation/resources/radius_manager.dart';
 import 'package:todo/core/presentation/resources/values_manager.dart';
 
 class TimePicker extends StatefulWidget {
@@ -48,7 +49,7 @@ class _TimePickerState extends State<TimePicker> {
         ),
         decoration: const BoxDecoration(
           color: ColorManager.offWhite,
-          borderRadius: BorderRadius.all(Radius.circular(AppSize.s12)),
+          borderRadius: BorderRadius.all(Radius.circular(RadiusManager.r12)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

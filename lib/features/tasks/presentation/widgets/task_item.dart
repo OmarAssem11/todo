@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo/core/presentation/extensions/time_of_day_to_formatted_string.dart';
 import 'package:todo/core/presentation/resources/color_manager.dart';
+import 'package:todo/core/presentation/resources/radius_manager.dart';
 import 'package:todo/core/presentation/resources/values_manager.dart';
 import 'package:todo/features/tasks/domain/entities/task.dart';
 import 'package:todo/features/tasks/presentation/cubit/tasks_cubit.dart';
@@ -26,7 +27,7 @@ class TaskItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: task.color,
         borderRadius: const BorderRadius.all(
-          Radius.circular(AppSize.s16),
+          Radius.circular(RadiusManager.r16),
         ),
       ),
       child: Row(

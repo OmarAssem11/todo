@@ -23,5 +23,5 @@ class DeleteTaskParams extends AppParams {
   DeleteTaskParams(this.task);
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [task];
 }

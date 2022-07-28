@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo/core/domain/enums/reminder.dart';
 import 'package:todo/core/presentation/resources/color_manager.dart';
+import 'package:todo/core/presentation/resources/radius_manager.dart';
 import 'package:todo/core/presentation/resources/values_manager.dart';
 
 class ReminderDropDownButton extends StatefulWidget {
@@ -30,7 +31,7 @@ class _ReminderDropDownButtonState extends State<ReminderDropDownButton> {
       ),
       decoration: const BoxDecoration(
         color: ColorManager.offWhite,
-        borderRadius: BorderRadius.all(Radius.circular(AppSize.s12)),
+        borderRadius: BorderRadius.all(Radius.circular(RadiusManager.r12)),
       ),
       child: DropdownButton<Reminder>(
         items: reminders
@@ -53,7 +54,8 @@ class _ReminderDropDownButtonState extends State<ReminderDropDownButton> {
           color: ColorManager.lightGrey,
         ),
         style: Theme.of(context).textTheme.bodyLarge,
-        borderRadius: const BorderRadius.all(Radius.circular(Insets.i16)),
+        borderRadius:
+            const BorderRadius.all(Radius.circular(RadiusManager.r16)),
         underline: const SizedBox(),
         dropdownColor: ColorManager.offWhite,
         isExpanded: true,

@@ -1,8 +1,6 @@
 class Constants {
   static const double appBarElevation = 0.0;
   static const int daysAddToLastDate = 30;
-  static const int padWidth = 2;
-  static const String padReplacement = '0';
   static const int tabsNumber = 4;
   static const int taskModelHiveTypeId = 0;
   static const int reminderHiveTypeId = 1;

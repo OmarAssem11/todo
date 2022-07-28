@@ -40,7 +40,6 @@ class _TableCalendarState extends State<Calendar> {
         isTodayHighlighted: false,
         defaultTextStyle: TextStyle(color: ColorManager.black),
         defaultDecoration: BoxDecoration(color: ColorManager.white),
-        selectedDecoration: BoxDecoration(color: ColorManager.primary),
       ),
     );
   }

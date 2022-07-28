@@ -10,7 +10,7 @@ class TasksHiveService {
 
   Future<int> createTask(TaskModel taskModel) => _taskModelsBox.add(taskModel);
 
-  Map<dynamic, TaskModel> getTasksMap() => _taskModelsBox.toMap();
+  List<TaskModel> getAllTasks() => _taskModelsBox.values.toList();
 
   Future<void> editTask(int index, TaskModel taskModel) =>
       _taskModelsBox.putAt(index, taskModel);

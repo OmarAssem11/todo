@@ -28,7 +28,6 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateRoute: onGenerateRoute,
         theme: getLightTheme(),
-        darkTheme: getDarkTheme(),
       ),
     );
   }

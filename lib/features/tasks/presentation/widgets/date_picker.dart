@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo/core/presentation/resources/color_manager.dart';
 import 'package:todo/core/presentation/resources/constants_manager.dart';
+import 'package:todo/core/presentation/resources/radius_manager.dart';
 import 'package:todo/core/presentation/resources/values_manager.dart';
 
 class DatePicker extends StatefulWidget {
@@ -42,7 +43,7 @@ class _DatePickerState extends State<DatePicker> {
         ),
         decoration: const BoxDecoration(
           color: ColorManager.offWhite,
-          borderRadius: BorderRadius.all(Radius.circular(AppSize.s12)),
+          borderRadius: BorderRadius.all(Radius.circular(RadiusManager.r12)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

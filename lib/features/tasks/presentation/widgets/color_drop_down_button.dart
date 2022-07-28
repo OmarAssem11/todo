@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/core/presentation/resources/color_manager.dart';
+import 'package:todo/core/presentation/resources/radius_manager.dart';
 import 'package:todo/core/presentation/resources/values_manager.dart';
 
 class ColorDropDownButton extends StatefulWidget {
@@ -35,8 +36,9 @@ class _ColorDropDownButtonState extends State<ColorDropDownButton> {
                   width: AppSize.s30,
                   decoration: BoxDecoration(
                     color: color,
-                    borderRadius:
-                        const BorderRadius.all(Radius.circular(Insets.i8)),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(RadiusManager.r8),
+                    ),
                   ),
                 ),
               ),

@@ -2,18 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:todo/core/presentation/resources/color_manager.dart';
 import 'package:todo/core/presentation/resources/constants_manager.dart';
 import 'package:todo/core/presentation/resources/font_manager.dart';
+import 'package:todo/core/presentation/resources/radius_manager.dart';
 import 'package:todo/core/presentation/resources/styles_manager.dart';
 import 'package:todo/core/presentation/resources/values_manager.dart';
 
 //Light theme
 ThemeData getLightTheme() => ThemeData(
       colorSchemeSeed: ColorManager.primary,
-      //Card
-      cardTheme: const CardTheme(
-        color: ColorManager.white,
-        shadowColor: ColorManager.grey,
-        elevation: AppSize.s4,
-      ),
       //AppBar
       appBarTheme: AppBarTheme(
         color: ColorManager.white,
@@ -30,12 +25,6 @@ ThemeData getLightTheme() => ThemeData(
         labelColor: ColorManager.black,
         unselectedLabelColor: ColorManager.lightGrey,
       ),
-      //Button
-      buttonTheme: const ButtonThemeData(
-        shape: StadiumBorder(),
-        disabledColor: ColorManager.grey,
-        buttonColor: ColorManager.primary,
-      ),
       //ElevatedButton
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -45,7 +34,7 @@ ThemeData getLightTheme() => ThemeData(
           ),
           primary: ColorManager.primary,
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(AppSize.s12)),
+            borderRadius: BorderRadius.all(Radius.circular(RadiusManager.r12)),
           ),
         ),
       ),
@@ -87,13 +76,13 @@ ThemeData getLightTheme() => ThemeData(
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.all(
-            Radius.circular(AppSize.s8),
+            Radius.circular(RadiusManager.r8),
           ),
         ),
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.all(
-            Radius.circular(AppSize.s8),
+            Radius.circular(RadiusManager.r8),
           ),
         ),
         errorBorder: const OutlineInputBorder(
@@ -102,7 +91,7 @@ ThemeData getLightTheme() => ThemeData(
             width: AppSize.s1_5,
           ),
           borderRadius: BorderRadius.all(
-            Radius.circular(AppSize.s8),
+            Radius.circular(RadiusManager.r8),
           ),
         ),
         focusedErrorBorder: const OutlineInputBorder(
@@ -111,7 +100,7 @@ ThemeData getLightTheme() => ThemeData(
             width: AppSize.s1_5,
           ),
           borderRadius: BorderRadius.all(
-            Radius.circular(AppSize.s8),
+            Radius.circular(RadiusManager.r8),
           ),
         ),
       ),
@@ -120,12 +109,6 @@ ThemeData getLightTheme() => ThemeData(
 //Dark theme
 ThemeData getDarkTheme() => ThemeData(
       colorSchemeSeed: ColorManager.primary,
-      //Card
-      cardTheme: const CardTheme(
-        color: ColorManager.white,
-        shadowColor: ColorManager.grey,
-        elevation: AppSize.s4,
-      ),
       //AppBar
       appBarTheme: AppBarTheme(
         centerTitle: true,
@@ -136,11 +119,10 @@ ThemeData getDarkTheme() => ThemeData(
           color: ColorManager.white,
         ),
       ),
-      //Button
-      buttonTheme: const ButtonThemeData(
-        shape: StadiumBorder(),
-        disabledColor: ColorManager.grey,
-        buttonColor: ColorManager.primary,
+      //TabBar
+      tabBarTheme: const TabBarTheme(
+        labelColor: ColorManager.white,
+        unselectedLabelColor: ColorManager.lightGrey,
       ),
       //ElevatedButton
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -151,7 +133,7 @@ ThemeData getDarkTheme() => ThemeData(
           ),
           primary: ColorManager.primary,
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(AppSize.s12)),
+            borderRadius: BorderRadius.all(Radius.circular(RadiusManager.r12)),
           ),
         ),
       ),
@@ -194,7 +176,7 @@ ThemeData getDarkTheme() => ThemeData(
             width: AppSize.s1_5,
           ),
           borderRadius: BorderRadius.all(
-            Radius.circular(AppSize.s8),
+            Radius.circular(RadiusManager.r8),
           ),
         ),
         focusedBorder: const OutlineInputBorder(
@@ -203,7 +185,7 @@ ThemeData getDarkTheme() => ThemeData(
             width: AppSize.s1_5,
           ),
           borderRadius: BorderRadius.all(
-            Radius.circular(AppSize.s8),
+            Radius.circular(RadiusManager.r8),
           ),
         ),
         errorBorder: const OutlineInputBorder(
@@ -212,7 +194,7 @@ ThemeData getDarkTheme() => ThemeData(
             width: AppSize.s1_5,
           ),
           borderRadius: BorderRadius.all(
-            Radius.circular(AppSize.s8),
+            Radius.circular(RadiusManager.r8),
           ),
         ),
         focusedErrorBorder: const OutlineInputBorder(
@@ -221,7 +203,7 @@ ThemeData getDarkTheme() => ThemeData(
             width: AppSize.s1_5,
           ),
           borderRadius: BorderRadius.all(
-            Radius.circular(AppSize.s8),
+            Radius.circular(RadiusManager.r8),
           ),
         ),
       ),
